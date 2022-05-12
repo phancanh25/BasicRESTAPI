@@ -33,5 +33,5 @@ const bookSchema = mongoose.Schema({
 });
 
 let Book = mongoose.model("Book", bookSchema);
-
-module.exports = { Book };
+let Author = mongoose.model("Author", authorSchema);
+module.exports = { Book, Author };

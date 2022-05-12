@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+const authorRoute = require("./routes/author");
+
+dotenv.config();
 
 //Connect to db
 mongoose.connect(process.env.mongoosedbURL, () => {
@@ -19,6 +22,8 @@ dotenv.config();
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors());
 app.use(morgan("common"));
+
+app.use("/v1/author", authorRoute);
 
 app.listen(4000, () => {
   console.log("App is running!!!");
