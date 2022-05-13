@@ -23,6 +23,23 @@ const bookController = {
       res.status(500).json(err);
     }
   },
+  getABook: async (req, res) => {
+    try {
+      const book = await Book.findById(req.params.id).populate("author");
+      res.status(200).json(book);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
+  updateBook: async (req, res) => {
+    try {
+      const book = await Book.findById(req.params.id);
+      await book.updateOne({ $set: req.body });
+      res.status(200).json("Update successfullly");
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
 };
 
 module.exports = bookController;
