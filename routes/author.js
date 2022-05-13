@@ -6,5 +6,6 @@ router.post("/", authorController.addAuthor);
 router.get("/", authorController.getAllAuthors);
 
 router.get("/:id", authorController.getAnAuthor);
+router.put("/:id", authorController.updateAuthor);
 
 module.exports = router;
